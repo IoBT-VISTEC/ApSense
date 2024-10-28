@@ -1,0 +1,8 @@
+.ipynb_checkpoint/
+**/__pycache__/**
+**/.ipynb_checkpoints/**
+
+config/
+multirun/
+outputs/
+mlruns/
