@@ -46,10 +46,15 @@ The annotation process:
 
 Train the ApSense model using:
 ```bash
-python train.py --train_data /path/to/train/data \
-                --val_data /path/to/val/data \
-                --model_config configs/apsense.yaml \
-                --output_dir /path/to/save/model
+python -u main.py \
+	--dataset mesa \
+	--model $YOUR_MODEL \
+	--dataset_dir $PATH_TO_YOUR_PROCESSED_DATASET \
+	--log_dir $LOG_DIR \
+	--weight_dir $WEIGHT_DIR \
+	--subsampling \
+	--gpu GPU_NUMBER \
+	> "stdout/mesa_${YOUR_MODEL}_aug.log" &
 ```
 
 Configuration options in `models/dsepnet.py`:
@@ -61,9 +66,9 @@ Configuration options in `models/dsepnet.py`:
 
 Evaluate the trained model:
 ```bash
-python evaluate.py --dataset heartbeat \
-                   -- model "DSepNet" \
-                   --dataset_dir PATH_TO_YOUR_PROCESSED_DATASET 
+python evaluate.py --dataset mesa \
+                   --model $YOUR_MODEL \
+                   --dataset_dir $PATH_TO_YOUR_PROCESSED_DATASET 
 ```
 
 The evaluation script reports:
@@ -84,10 +89,6 @@ If you find this work useful, please cite our paper:
   publisher={IEEE}
 }
 ```
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
